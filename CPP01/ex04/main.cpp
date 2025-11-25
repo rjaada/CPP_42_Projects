@@ -6,7 +6,7 @@
 /*   By: rjaada <rjaada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 15:53:48 by rjaada            #+#    #+#             */
-/*   Updated: 2025/10/09 17:48:07 by rjaada           ###   ########.fr       */
+/*   Updated: 2025/11/24 15:25:09 by rjaada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,12 @@ int	main(int argc, char **argv)
 	}
 
 	std::ofstream outputFile((filename + ".replace").c_str());
+	if (outputFile.fail())
+	{
+		std::cerr << "Error: Could not create output file " << filename << ".replace (e.g., permissions or directory conflict)." << std::endl;
+		return (1);
+	}
+	
 	outputFile << content;
 	outputFile.close();
 
