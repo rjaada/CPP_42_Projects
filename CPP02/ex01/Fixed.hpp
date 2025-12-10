@@ -6,7 +6,7 @@
 /*   By: rjaada <rjaada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 21:15:10 by rjaada            #+#    #+#             */
-/*   Updated: 2025/11/07 23:38:12 by rjaada           ###   ########.fr       */
+/*   Updated: 2025/12/07 02:17:11 by rjaada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ class Fixed
 		Fixed(const float f_num);
 		Fixed(const Fixed &copy);
 		Fixed &operator=(const Fixed &Fixed);
-		friend std::ostream& operator<<(std::ostream& out, const Fixed& fixed);
 		float toFloat( void ) const;
 		int toInt( void ) const;
 		~Fixed();
 };
-
+	
+		std::ostream& operator<<(std::ostream& out, const Fixed& fixed);
 #endif

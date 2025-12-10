@@ -6,7 +6,7 @@
 #    By: rjaada <rjaada@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/09 21:16:25 by rjaada            #+#    #+#              #
-#    Updated: 2025/12/10 19:23:53 by rjaada           ###   ########.fr        #
+#    Updated: 2025/12/10 20:47:39 by rjaada           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = main.cpp \
 		ClapTrap.cpp \
-		ScavTrap.cpp
+		ScavTrap.cpp \
+		FragTrap.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all : $(NAME)
