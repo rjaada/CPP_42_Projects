@@ -1,5 +1,5 @@
-#ifndef POLYMORPHISM_HPP
-# define POLYMORPHISM_HPP
+#ifndef ANIMAL_HPP
+# define ANIMAL_HPP
 
 # include <iostream>
 # include <string>
@@ -11,9 +11,10 @@ class Animal
 	public:
 		Animal();
 		Animal(const Animal &other);
-		Animal& operator=(Animal const other);
-		void makeSound();
-		~Animal();
+		Animal& operator=(Animal const &other);
+		virtual void makeSound();
+		virtual ~Animal();
+		std::string GetType() const {return type;}
 };
 
 #endif

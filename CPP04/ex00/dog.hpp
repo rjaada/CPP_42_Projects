@@ -5,11 +5,13 @@
 
 class Dog : public Animal
 {
-	Dog();
-	Dog(const Dog &other);
-	Dog& operator=(Dog const other);
-	void makeSound();
-	~Dog();
+	public:
+		Dog();
+		Dog(const Dog &other);
+		Dog& operator=(Dog const other);
+		virtual void makeSound();
+		std::string GetType() const {return type;}
+		virtual ~Dog();
 
 };
 
