@@ -15,11 +15,13 @@
 
 Cat::Cat() : Animal()
 {
+	this->type = "Cat";
 	std::cout << "Cat Default Constructor Called" << std::endl;
 }
 
 Cat::Cat(const Cat &other) : Animal(other)
 {
+	*this = other;
 	std::cout << "Cat Copy Constructor Called" << std::endl;
 }
 
@@ -28,10 +30,11 @@ Cat &Cat::operator=(Cat const &other)
 	std::cout << "Cat Copy Assignment Called" << std::endl;
 	if (this != &other)
 		Animal::operator=(other);
+		//this->type = other.type;
 	return (*this);
 }
 
-void Cat::makeSound()
+void Cat::makeSound() const
 {
 	std::cout << "Meowwwwwwwwwww" << std::endl;
 }
