@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rjaada <rjaada@student.42.fr>              #+#  +:+       +#+        */
+/*   By: rjaada <rjaada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-04-10 19:26:14 by rjaada            #+#    #+#             */
-/*   Updated: 2026-04-10 19:26:14 by rjaada           ###   ########.fr       */
+/*   Created: 2026/04/10 19:26:14 by rjaada            #+#    #+#             */
+/*   Updated: 2026/04/13 21:34:29 by rjaada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 int	main(void)
 {
+	Bureaucrat b("hassan", 1);
+	b.decrementGrade();
+	
 	try
 	{
 		Bureaucrat b1("Rachid", 42);
