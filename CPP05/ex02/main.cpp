@@ -11,45 +11,43 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include <cstdlib>
+#include <ctime>
 
-int main(void)
+int	main(void)
 {
-    std::cout << "--- CREATION TESTS ---" << std::endl;
-    try {
-        Form impossible("Impossible", 0, 50); // Should throw
-    } catch (std::exception &e) {
-        std::cout << "Error: " << e.what() << std::endl;
-    }
+	std::srand(std::time(NULL)); // Seeds RNG for Robotomy
 
-    try {
-        Form easy("Easy", 150, 150);
-        Form hard("Hard", 1, 1);
-        Bureaucrat chad("Chad", 1);
-        Bureaucrat noob("Noob", 150);
+	try
+	{
+		Bureaucrat boss("Boss", 1);
+		Bureaucrat noob("Noob", 150);
 
-        std::cout << "\n--- FORM INFO ---" << std::endl;
-        std::cout << easy;
-        std::cout << hard;
+		ShrubberyCreationForm tree("Garden");
+		RobotomyRequestForm robo("Bender");
+		PresidentialPardonForm pardon("Zaphod");
 
-        std::cout << "\n--- SIGNING TESTS ---" << std::endl;
-        
-        // Noob tries to sign hard form (Fails)
-        noob.signForm(hard);
-        
-        // Noob tries to sign easy form (Success)
-        noob.signForm(easy);
+		std::cout << "\n--- NOOB TRIES STUFF ---" << std::endl;
+		noob.executeForm(tree); // Fails: not signed
+		noob.signForm(tree);    // Fails: grade too low
 
-        // Chad signs hard form (Success)
-        chad.signForm(hard);
+		std::cout << "\n--- BOSS SIGNS ---" << std::endl;
+		boss.signForm(tree);
+		boss.signForm(robo);
+		boss.signForm(pardon);
 
-        std::cout << "\n--- FINAL FORM INFO ---" << std::endl;
-        std::cout << easy;
-        std::cout << hard;
+		std::cout << "\n--- BOSS EXECUTES ---" << std::endl;
+		boss.executeForm(tree);
+		boss.executeForm(robo);
+		boss.executeForm(pardon);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << "Error: " << e.what() << std::endl;
+	}
 
-    } catch (std::exception &e) {
-        std::cout << "Error: " << e.what() << std::endl;
-    }
-
-    return 0;
+	return (0);
 }

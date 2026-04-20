@@ -18,6 +18,7 @@
 # include <string>
 # include <exception>
 #include <fstream>
+#include <cstdlib>
 
 class RobotomyRequestForm : public AForm
 {

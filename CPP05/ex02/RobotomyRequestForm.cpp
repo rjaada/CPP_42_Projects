@@ -32,6 +32,15 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm const &o
 	return *this;
 }
 
+void RobotomyRequestForm::executeAction() const
+{
+	std::cout << "DRRRRRRRRRRRRRR DRRRRRRRRRR... LOUD DRILLING NOISES" << std::endl;
+	if(std::rand() % 2 == 0)
+		std::cout << this->target << " has been robotomized successfully!" << std::endl;
+	else
+		std::cout << "Robotomy on " << this->target << " failed big time." << std::endl;
+}
+
 RobotomyRequestForm::~RobotomyRequestForm()
 {
 	std::cout << "RobotomyRequestForm Destructor Called" << std::endl;
