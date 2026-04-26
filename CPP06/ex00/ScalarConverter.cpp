@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Converter.cpp                                      :+:      :+:    :+:   */
+/*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rjaada <rjaada@student.42.fr>              #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026-04-23 04:34:10 by rjaada            #+#    #+#             */
-/*   Updated: 2026-04-23 04:34:10 by rjaada           ###   ########.fr       */
+/*   Created: 2026-04-26 01:47:32 by rjaada            #+#    #+#             */
+/*   Updated: 2026-04-26 01:47:32 by rjaada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Converter.hpp"
+#include "ScalarConverter.hpp"
+#include <stdlib.h>
 
-void ScalarConverter::checker(std::string literals)
+void ScalarConverter::convert(std::string literals)
 {
 
 	if (literals[0] == '\'')
 		convert_char(literals);
-	else if ((literals[literals.length() - 1]) == 'f')
+	else if ((literals[literals.length() - 1]) == 'f' && literals != "+inf" && literals != "-inf" && literals != "nan")
 		convert_float(literals);
 	else if (literals.find("nanf") != std::string::npos || literals.find("+inff") != std::string::npos || literals.find("-inff") != std::string::npos)
 		convert_float(literals);
@@ -44,15 +45,27 @@ void ScalarConverter::convert_char(std::string literals)
 void	ScalarConverter::convert_float(std::string literals)
 {
 	float f;
-	f = std::stof(literals);
-	if (isprint(static_cast<char>(f)))
-		std::cout << "char: '" << static_cast<char>(f) << "'" << std::endl;
-	else if (literals == "nanf" || literals == "+inff" || literals == "-inff")
+	f = atof(literals.c_str());
+	if (literals == "nanf" || literals == "+inff" || literals == "-inff")
 		std::cout << "char: Impossible"  << std::endl;
+	else if (isprint(static_cast<char>(f)))
+		std::cout << "char: '" << static_cast<char>(f) << "'" << std::endl;
 	else
 		std::cout << "char: Non displayable" << std::endl;
-	std::cout << "float: " << std::setprecision(1) << std::fixed << f << "f" << std::endl;
-	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(f) << std::endl;
+	
+	if (literals == "+inf" || literals == "+inff")
+		std::cout << "float: +" << std::fixed << std::setprecision(1) << static_cast<float>(atof(literals.c_str())) << "f" << std::endl;
+	else if (literals == "-inf" || literals == "-inff")
+		std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(atof(literals.c_str())) << "f" << std::endl;
+	else
+		std::cout << "float: " << std::setprecision(1) << std::fixed << f << "f" << std::endl;
+	
+	if (literals == "+inf" || literals == "+inff")
+		std::cout << "double: +" << std::fixed << std::setprecision(1) << static_cast<double>(f) << std::endl;
+	else if (literals == "-inf" || literals == "-inff")
+		std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(f) << std::endl;
+	else
+		std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(f) << std::endl;
 	if (literals == "nanf" || literals == "+inff" || literals == "-inff")
 		std::cout << "int: Impossible"  << std::endl;
 	else
@@ -62,15 +75,26 @@ void	ScalarConverter::convert_float(std::string literals)
 void	ScalarConverter::convert_double(std::string literals)
 {
 	double d;
-	d = std::stod(literals);
+	d = atof(literals.c_str());
 	if (literals == "nan" || literals == "+inf" || literals == "-inf")
 		std::cout << "char: Impossible"  << std::endl;
 	else if (isprint(static_cast<char>(d)))
 		std::cout << "char: '" << static_cast<char>(d) << "'" << std::endl;
 	else
 		std::cout << "char: Non displayable" << std::endl;
-	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(d) << "f" << std::endl;
-	std::cout << "double: " << std::fixed << std::setprecision(1) << d << std::endl;
+	if (literals == "+inf" || literals == "+inff")
+		std::cout << "float: +" << std::fixed << std::setprecision(1) << static_cast<float>(atof(literals.c_str())) << "f" << std::endl;
+	else if	(literals == "-inf" || literals == "-inff")
+		std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(atof(literals.c_str())) << "f" << std::endl;
+	else
+		std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(atof(literals.c_str())) << "f" << std::endl;
+	
+	if (literals == "+inf")
+		std::cout << "double: +" << std::fixed << std::setprecision(1) << d << std::endl;
+	else if (literals == "-inf")
+		std::cout << "double: " << std::fixed << std::setprecision(1) << d << std::endl;
+	else
+		std::cout << "double: " << std::fixed << std::setprecision(1) << d << std::endl;
 	if (literals == "nan" || literals == "+inf" || literals == "-inf")
 		std::cout << "int: Impossible"  << std::endl;
 	else
@@ -80,21 +104,12 @@ void	ScalarConverter::convert_double(std::string literals)
 void	ScalarConverter::convert_int(std::string literals)
 {
 	int i;
-	i = std::stoi(literals);
+	i = atoi(literals.c_str());
 	if (isprint(static_cast<char>(i)))
 		std::cout << "char: '" << static_cast<char>(i) << "'" << std::endl;
 	else
 		std::cout << "char: Non displayable"  << std::endl;
-	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(i) << "f" << std::endl;
+	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(atof(literals.c_str())) << "f" << std::endl;
 	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(i) << std::endl;
 	std::cout << "int: " << static_cast<int>(i) << std::endl;
-}
-
-int	main(int argc, char **argv)
-{
-	if (argc != 2)
-		return (1);
-	std::string l = argv[1];
-	ScalarConverter::checker(l);
-	return 0;
 }
