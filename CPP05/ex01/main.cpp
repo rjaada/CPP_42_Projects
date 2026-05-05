@@ -17,7 +17,7 @@ int main(void)
 {
     std::cout << "--- CREATION TESTS ---" << std::endl;
     try {
-        Form impossible("Impossible", 0, 50); // Should throw
+        Form impossible("Impossible", 0, 50);
     } catch (std::exception &e) {
         std::cout << "Error: " << e.what() << std::endl;
     }

@@ -35,7 +35,7 @@ int main()
     delete rrf;
     delete scf;
     delete ppf;
-    delete fail; // C++ handles delete NULL fine
+    delete fail;
 
     return 0;
 }
