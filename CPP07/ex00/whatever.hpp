@@ -1,0 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   whatever.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rjaada <rjaada@student.42.fr>              #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026-05-05 01:00:20 by rjaada            #+#    #+#             */
+/*   Updated: 2026-05-05 01:00:20 by rjaada           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef WHATEVER_HPP
+# define WHATEVER_HPP
+
+# include <iostream>
+# include <string>
+
+template <typename T> void swap(T &x, T &y)
+{
+	T temp = x;
+	x = y;
+	y = temp;
+}
+
+template <typename T> T const &min(T const &x, T const &y)
+{
+	return (x < y ? x : y);
+}
+
+template <typename T> T const &max(T const &x, T const &y)
+{
+	return (x > y ? x : y);
+}
+
+#endif
