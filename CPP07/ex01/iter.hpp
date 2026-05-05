@@ -16,7 +16,7 @@
 # include <iostream>
 # include <string>
 
-template <typename T> void iter(T* arr, int const lenght, void (*func)(T &))
+template <typename T, typename F> void iter(T* arr, int const lenght, F func)
 {
 	for (int i = 0; i < lenght; i++)
 		func(arr[i]);

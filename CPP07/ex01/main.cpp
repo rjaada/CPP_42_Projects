@@ -27,6 +27,12 @@ void	increment(int &x)
 	x += 1;
 }
 
+void print(int const &x)
+{
+	std::cout << x << std::endl;
+}
+
+
 int	main(void)
 {
 	int arr[] = {1, 2, 3, 4, 5};
@@ -41,6 +47,7 @@ int	main(void)
 	int arr2[] = {10, 20, 30};
 	iter(arr2, 3, increment);
 	iter(arr2, 3, printInt);
+	iter(arr, len, print);
 
 	return (0);
 }
