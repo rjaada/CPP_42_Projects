@@ -26,17 +26,16 @@ template <typename T> class Array
 	T *myarray;
 
   public:
-	Array() : s(0), myarray(NULL)
-	{
-	}
-	Array(unsigned int n) : s(n), myarray(new T[n])
-	{
-	}
+	Array() : s(0), myarray(NULL){}
+
+	Array(unsigned int n) : s(n), myarray(new T[n]){}
+
 	Array(Array const &other) : s(other.s), myarray(new T[s])
 	{
 		for (unsigned int i = 0; i < s; i++)
 			myarray[i] = other.myarray[i];
 	}
+	
 	Array &operator=(const Array &copy)
 	{
 		if (this != &copy)
@@ -49,20 +48,24 @@ template <typename T> class Array
 		}
 		return (*this);
 	}
+	
 	~Array()
 	{
 		delete[] myarray;
 	}
+	
 	unsigned int size() const
 	{
 		return (s);
 	}
+	
 	T &operator[](unsigned int index)
 	{
 		if (index >= s)
 			throw std::exception();
 		return (myarray[index]);
 	}
+	
 	const T &operator[](unsigned int index) const
 	{
 		if (index >= s)

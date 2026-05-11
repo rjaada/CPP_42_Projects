@@ -22,5 +22,10 @@ template <typename T, typename F> void iter(T* arr, int const lenght, F func)
 		func(arr[i]);
 }
 
+template <typename T> void iter(T* arr, int const length, void (*func)(T const &))
+{
+    for (int i = 0; i < length; i++)
+        func(arr[i]);
+}
 
 #endif
