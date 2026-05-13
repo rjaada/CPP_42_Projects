@@ -27,11 +27,15 @@ void	increment(int &x)
 	x += 1;
 }
 
-void print(int const &x)
+void	print(int const &x)
 {
 	std::cout << x << std::endl;
 }
 
+template <typename T> void printConst(T const &x)
+{
+	std::cout << x << std::endl;
+}
 
 int	main(void)
 {
@@ -41,9 +45,9 @@ int	main(void)
 	std::string s[] = {"rachid", "jaada", "42school"};
 
 	iter(arr, len, printInt);
+	iter(arr, len, printConst);
 	iter(s, 3, printStr);
 
-	// test modification
 	int arr2[] = {10, 20, 30};
 	iter(arr2, 3, increment);
 	iter(arr2, 3, printInt);

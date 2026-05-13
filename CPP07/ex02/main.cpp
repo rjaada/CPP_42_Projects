@@ -3,19 +3,6 @@
 
 #define MAX_VAL 750
 
-class Awesome
-{
-  public:
-	Awesome() : _n(42){}
-	int get() const
-	{
-		return (_n);
-	}
-
-  private:
-	int _n;
-};
-
 int	main(int, char **)
 {
 	Array<int> numbers(MAX_VAL);
@@ -64,13 +51,5 @@ int	main(int, char **)
 	}
 	delete[] mirror; //
 	
-	Array<std::string> strArr(3);
-	strArr[0] = "hello";
-	strArr[1] = "world";
-	strArr[2] = "42";
-	std::cout << strArr[0] << std::endl;
-	std::cout << strArr[1] << std::endl;
-	std::cout << strArr[2] << std::endl;
-
 	return (0);
 }
