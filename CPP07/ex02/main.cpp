@@ -51,5 +51,7 @@ int	main(int, char **)
 	}
 	delete[] mirror;
 	
+
+
 	return (0);
 }
