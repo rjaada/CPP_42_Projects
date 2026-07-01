@@ -32,7 +32,7 @@ int	main(void)
 		std::cerr << e.what() << std::endl;
 	}
 
-	std::cout << "\n--- 10k Range Flex Test ---" << std::endl;
+	std::cout << "\n--- 10k Range Test ---" << std::endl;
 	Span bigSp = Span(10000);
 	std::vector<int> randomNums;
 
@@ -44,7 +44,7 @@ int	main(void)
 
 	try
 	{
-		// Boom, adding them all at once
+		// Adding them all at once
 		bigSp.addNumber(randomNums.begin(), randomNums.end());
 		std::cout << "Shortest: " << bigSp.shortestSpan() << std::endl;
 		std::cout << "Longest: " << bigSp.longestSpan() << std::endl;
