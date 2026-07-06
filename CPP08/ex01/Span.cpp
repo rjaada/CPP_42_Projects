@@ -12,17 +12,11 @@
 
 #include "Span.hpp"
 
-Span::Span() : N(0)
-{
-}
+Span::Span() : N(0){}
 
-Span::Span(unsigned int num) : N(num)
-{
-}
+Span::Span(unsigned int num) : N(num){}
 
-Span::Span(Span const &other) : N(other.N), _vec(other._vec)
-{
-}
+Span::Span(Span const &other) : N(other.N), _vec(other._vec){}
 
 Span &Span::operator=(Span const &other)
 {
@@ -34,9 +28,7 @@ Span &Span::operator=(Span const &other)
 	return (*this);
 }
 
-Span::~Span()
-{
-}
+Span::~Span(){}
 
 // Core Methods
 void Span::addNumber(int n)

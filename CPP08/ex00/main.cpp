@@ -13,6 +13,7 @@
 #include "easyfind.hpp"
 #include <algorithm>
 #include <vector>
+#include <list>
 
 int	main(void)
 {
@@ -24,6 +25,19 @@ int	main(void)
 		std::cout << "Found value: " << *it << std::endl;
 	}
 	catch (const std::exception &e)
+	{
+		std::cerr << "Value not found" << std::endl;
+	}
+
+	std::cout << "----------------- list test-----------------" << std::endl;
+
+	std::list<int> num(arr, arr + 5);
+	try
+	{
+		std::list<int>::iterator it = easyfind(num, 43);
+		std::cout << "Found value: " << *it << std::endl;
+	}
+	catch(const std::exception& e)
 	{
 		std::cerr << "Value not found" << std::endl;
 	}

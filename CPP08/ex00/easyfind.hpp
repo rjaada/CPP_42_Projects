@@ -29,9 +29,4 @@ typename T::iterator easyfind(T &container, int i)
 	else
 		return it;
 }
-
-
-
-
-
 #endif
