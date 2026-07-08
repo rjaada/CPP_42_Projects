@@ -1,0 +1,58 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   RPN.cpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rjaada <rjaada@student.42.fr>              #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026-07-08 17:45:50 by rjaada            #+#    #+#             */
+/*   Updated: 2026-07-08 17:45:50 by rjaada           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "RPN.hpp"
+
+RPN::RPN() : stk(){}
+
+RPN::RPN(RPN const &other) : stk(other.stk){}
+
+RPN& RPN::operator=(RPN const &other)
+{
+	if(this != &other)
+		this->stk = other.stk;
+	return *this;
+}
+
+RPN::~RPN(){}
+
+int RPN::CalcRpn(std::string tokens)
+{
+	std::istringstream ss(tokens);
+
+	while (ss >> tokens)
+	{
+		if (tokens == "+" || tokens == "-" || tokens == "*" || tokens == "/")
+		{
+			if (stk.size() < 2)
+				throw std::runtime_error("Error");
+
+			int a = stk.top();
+			stk.pop();
+			int b = stk.top();
+			stk.pop();
+			
+			if(tokens == "+")
+				stk.push(b + a);
+			else if(tokens == "-")
+				stk.push(b - a);
+			else if(tokens == "*")
+				stk.push(b * a);
+			else if(tokens == "/")
+				stk.push(b / a);
+		}
+		else
+			stk.push(atoi(tokens.c_str()));
+	}
+	return stk.top();
+
+}
