@@ -35,7 +35,6 @@ int RPN::CalcRpn(std::string tokens)
 		{
 			if (stk.size() < 2)
 				throw std::runtime_error("Error");
-
 			int a = stk.top();
 			stk.pop();
 			int b = stk.top();
@@ -48,11 +47,23 @@ int RPN::CalcRpn(std::string tokens)
 			else if(tokens == "*")
 				stk.push(b * a);
 			else if(tokens == "/")
-				stk.push(b / a);
+			{
+				if(a == 0)
+					throw std::runtime_error("Error");
+				else
+					stk.push(b / a);
+			}
 		}
 		else
+		{
+			if (tokens.length() != 1 || !isdigit(tokens[0]))
+        		throw std::runtime_error("Error");
 			stk.push(atoi(tokens.c_str()));
+		}
 	}
+	if (stk.size() != 1)
+    	throw std::runtime_error("Error");
+
 	return stk.top();
 
 }
